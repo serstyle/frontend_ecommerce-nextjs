@@ -1,0 +1,17 @@
+.root {
+  min-width: 275px;
+  max-width: 400px;
+}
+.title {
+  font-size: 14px;
+}
+
+.pos {
+  margin-bottom: 12px !important;
+}
+
+.buyingContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
