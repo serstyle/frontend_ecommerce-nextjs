@@ -4,34 +4,20 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 import Button from "@material-ui/core/Button";
 import styles from "./NavBar.module.css";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import * as NextLink from "next/link";
-
+import { ICart, ICartItems } from "../../interfaces/ISnipcartStore";
+import ShoppingIcon from "@material-ui/icons/ShoppingCart";
 export interface IProps {
   title: string;
+  cart: ICart;
 }
 
 export interface NavBarCart {
   totalPrice: number;
-  
 }
 
 export default function NavBar(props: IProps) {
-  const [user, setUser] = React.useState(null);
-
-  React.useEffect(() => {
-    document.addEventListener("snipcart.ready", function () {
-      let currentValue: any; // TODO: need to fix an interface
-      const unsubscribe = (window as any).Snipcart.store.subscribe(() => {
-        let previousValue = currentValue;
-        currentValue = (window as any).Snipcart.store.getState();
-
-        if (previousValue !== currentValue) {
-          const cart = (window as any).Snipcart.store.getState().cart;
-          console.log(cart);
-        }
-      });
-    });
-  });
   return (
     <div>
       <AppBar position="static">
@@ -41,14 +27,12 @@ export default function NavBar(props: IProps) {
               {props.title}
             </Button>
           </NextLink.default>
-          <div>
-            <button className="snipcart-checkout">
-              Click here to checkout
-            </button>
-            <span className="snipcart-items-count"></span>
-            <span className="snipcart-total-price"></span>
-            <button className="snipcart-customer-signin">My account</button>
-            <button className="snipcart-customer-register">register</button>
+          <div style={{ display: "flex" }}>
+            {/* <span className="snipcart-items-count"></span>
+            <span className="snipcart-total-price"></span> */}
+            <button className="btn snipcart-customer-signin">signin</button>
+            <button className="btn snipcart-customer-register">register</button>
+            {props.cart ? <ShoppingCart cart={props.cart} /> : <ShoppingIcon className="btn" />}
           </div>
         </Toolbar>
       </AppBar>
