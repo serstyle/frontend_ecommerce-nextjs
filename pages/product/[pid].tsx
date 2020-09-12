@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const resources = await getCommonResources();
   const product = await getProductById(Number(params?.pid));
-  return { props: { product, resources } };
+  return { props: { product, resources }, revalidate: 5 };
 };
 
 export interface IProps {
