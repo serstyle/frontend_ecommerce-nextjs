@@ -12,6 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
           href="https://cdn.snipcart.com/themes/v3.0.21/default/snipcart.css"
         />
+        <meta name="description" content="Le meilleur du savon bio fait main" />
+        <meta name="og:descirption" content="Le meilleur du savon bio fait main" />
+        <meta name="keywords" content="savon, savonade, bio, alep, frontend, ecommerce, nextjs"/>
       </Head>
       <Container>
         <Component {...pageProps} />

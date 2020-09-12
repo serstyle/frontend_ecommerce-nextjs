@@ -5,7 +5,7 @@
 .flex {
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  padding: 8px 16px;
 }
 .price {
   padding: 12px 0;
