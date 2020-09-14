@@ -82,7 +82,7 @@ export default function ProductById(props: IProps) {
         <div className={styles.imgContainer}>
           <img
             alt={product.images[0].alternativeText}
-            src={`${process.env.NEXT_PUBLIC_STRAPIAPILINK}${product.images[0].url}`}
+            src={product.images[0].url}
           />
         </div>
 
