@@ -23,9 +23,8 @@ export default function ProductCard(props: IProps) {
     <Card>
       <CardActionArea onClick={goToProduct} href={`/product/${product.id}`}>
         <CardMedia
-          image={`${process.env.NEXT_PUBLIC_STRAPIAPILINK}${product.images[0].url}`}
+          image={product.images[0].url}
           title={product.name}
-          
           className={styles.media}
         />
         <CardContent>

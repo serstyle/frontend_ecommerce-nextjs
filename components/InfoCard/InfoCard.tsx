@@ -28,7 +28,7 @@ export default function SimpleCard(props: IProps) {
           data-item-price={product.price}
           data-item-url={process.env.NEXT_PUBLIC_DOMAIN + route}
           data-item-description={product.description}
-          data-item-image={`${process.env.NEXT_PUBLIC_STRAPIAPILINK}${product.images[0].url}`}
+          data-item-image={product.images[0].url}
           data-item-name={product.name}
           size="small"
           color="primary"
