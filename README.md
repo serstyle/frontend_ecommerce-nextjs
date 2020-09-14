@@ -1,19 +1,19 @@
 ## Create an eCommerce shop.  
 
-# FRONTEND
+### FRONTEND
 - React 
 - next js static site generator
 - typescript 
 
-# BACKEND/CMS
+### BACKEND/CMS
 - postgres 
 - Strapi as headless cms node      // https://strapi.io/
 - Cloudinary as a media library    // https://cloudinary.com/
 
-# ECOMMERCE
+### ECOMMERCE
 - Snipcart eComerce                // https://snipcart.com/
 
-# HOST
+### HOST
 - Deploy heroku and vercel
 
 
