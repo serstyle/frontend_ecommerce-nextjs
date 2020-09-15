@@ -7,7 +7,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [cart, setCart] = React.useState(null);
 
   React.useEffect(() => {
-    // document.addEventListener("snipcart.ready", function () {
+    console.log("useeffect")
+    document.addEventListener("snipcart.ready", () => {
+      console.log("snipcart ready")
       let currentValue: any; // TODO: need to fix an interface
       // (window as any).Snipcart.events.on(
       //   "snipcart.initialized",
@@ -22,23 +24,20 @@ function MyApp({ Component, pageProps }: AppProps) {
       //   setCart(cart);
       //   console.log("cart", cart);
       // }
-      console.log("snmipcart ready")
       const unsubscribe = (window as any).Snipcart.store.subscribe(() => {
-        console.log("subscrive");
+        console.log("sunbscrive")
         let previousValue = currentValue;
         currentValue = (window as any).Snipcart.store.getState();
-        console.log(currentValue, previousValue);
+        console.log(previousValue, currentValue)
         if (previousValue !== currentValue) {
           const cart = (window as any).Snipcart.store.getState().cart;
           setCart(cart);
-          console.log("cart", cart);
         }
       });
       // }
       // );
       // unsubscribe();
-    // });
-    console.log("useEffect trigered");
+    });
   }, []);
   return (
     <div>
