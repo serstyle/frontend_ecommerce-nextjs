@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [cart, setCart] = React.useState(null);
 
   React.useEffect(() => {
-    document.addEventListener("snipcart.ready", function () {
+    // document.addEventListener("snipcart.ready", function () {
       let currentValue: any; // TODO: need to fix an interface
       // (window as any).Snipcart.events.on(
       //   "snipcart.initialized",
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       // }
       // );
       // unsubscribe();
-    });
+    // });
     console.log("useEffect trigered");
   }, []);
   return (
