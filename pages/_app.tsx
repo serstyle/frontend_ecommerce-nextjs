@@ -17,10 +17,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         if (previousValue !== currentValue) {
           const cart = (window as any).Snipcart.store.getState().cart;
           setCart(cart);
+          console.log("cart", cart)
         }
       });
       // unsubscribe();
     });
+    console.log("useEffect trigered")
   }, []);
   return (
     <div>

@@ -33,6 +33,7 @@ export default function NavBar(props: IProps) {
             <button className="btn snipcart-customer-signin">signin</button>
             <button className="btn snipcart-customer-register">register</button>
             {props.cart ? <ShoppingCart cart={props.cart} /> : <ShoppingIcon className="btn" />}
+            <div className="snipcart-checkout">check</div>
           </div>
         </Toolbar>
       </AppBar>
