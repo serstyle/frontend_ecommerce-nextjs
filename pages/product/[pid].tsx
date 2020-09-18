@@ -9,7 +9,7 @@ import Header from "../../components/Header/Header";
 import { getCommonResources } from "../../services/getCommonResources";
 import styles from "./[pid].module.css";
 import InfoCard from "../../components/InfoCard/InfoCard";
-import { ICart } from "../../interfaces/ISnipcartStore";
+import { IStore } from "../../interfaces/ISnipcartStore";
 import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
 import { Snackbar } from "@material-ui/core";
 
