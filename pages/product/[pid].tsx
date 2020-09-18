@@ -38,7 +38,7 @@ export interface IProps {
   product: Product;
   resources: CommonResources;
   strapiLink: string;
-  cart: ICart;
+  store: IStore;
 }
 
 export default function ProductById(props: IProps) {
@@ -68,13 +68,13 @@ export default function ProductById(props: IProps) {
     };
   }, []);
   const router = useRouter();
-  const { product, resources, cart } = props;
+  const { product, resources, store } = props;
   return (
     <div>
       <Head>
         <title>{product.name}</title>
       </Head>
-      <Header cart={cart} resources={resources} />
+      <Header store={store} resources={resources} />
       <div>
         <Link href="/">Go back</Link>
       </div>

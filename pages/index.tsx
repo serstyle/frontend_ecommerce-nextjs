@@ -6,12 +6,12 @@ import ProductsComponent from "../components/Products/Products";
 import { GetStaticProps } from "next";
 import Header from "../components/Header/Header";
 import { getCommonResources } from "../services/getCommonResources";
-import { ICart } from "../interfaces/ISnipcartStore";
+import { ICart, IStore } from "../interfaces/ISnipcartStore";
 
 export interface IProps {
   products: Product[];
   resources: CommonResources;
-  cart: ICart;
+  store: IStore;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -21,14 +21,14 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home(props: IProps) {
-  const { products, resources, cart } = props;
+  const { products, resources, store } = props;
   return (
     <div>
       <Head>
         <title>{resources.titleWebsite}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header cart={cart} resources={resources} />
+      <Header store={store} resources={resources} />
 
       <div style={{ marginTop: 24 }}>
         {products && <ProductsComponent products={products} />}

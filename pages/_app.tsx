@@ -1,45 +1,34 @@
 import { AppProps } from "next/app";
 import "../styles/globals.css";
+import "../styles/snipcart.css";
 import { Container } from "@material-ui/core";
 import Head from "next/head";
 import React from "react";
 function MyApp({ Component, pageProps }: AppProps) {
-  const [cart, setCart] = React.useState(null);
+  const [store, setStore] = React.useState(null);
+  const [snipcartReady, setSnipcartReady] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("useeffect");
-    // document.addEventListener("snipcart.ready", () => {
-    console.log("snipcart ready");
-    let currentValue: any; // TODO: need to fix an interface
-    // (window as any).Snipcart?.events.on(
-    //   "snipcart.initialized",
-    //   (snipcartState: any) => {
-    //     console.log("initialized")
-    // console.log(snipcartState);
-    // let previousValue = currentValue;
-    // currentValue = snipcartState;
+    document.addEventListener("snipcart.ready", () => {
+      setSnipcartReady(true);
+    });
+  }, []);
 
-    // if (previousValue !== currentValue) {
-    //   const cart = snipcartState.cart;
-    //   setCart(cart);
-    //   console.log("cart", cart);
-    // }
-      (window as any).Snipcart?.store.subscribe(() => {
-      console.log("sunbscrsdvess");
+  React.useEffect(() => {
+    console.log(snipcartReady);
+    // if (snipcartReady) { // maye need to be removed
+    let currentValue: any;
+    (window as any).Snipcart?.store.subscribe(() => {
       let previousValue = currentValue;
       currentValue = (window as any).Snipcart.store.getState();
       console.log(previousValue, currentValue);
       if (previousValue !== currentValue) {
-        const cart = (window as any).Snipcart.store.getState().cart;
-
-        setCart(cart);
+        const store = (window as any).Snipcart.store.getState();
+        setStore(store);
       }
-      // });
-      // }
-      // );
-      // unsubscribe();
     });
-  }, []);
+    // }
+  }, [snipcartReady]);
   return (
     <div>
       <Head>
@@ -49,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
           href="https://cdn.snipcart.com/themes/v3.0.21/default/snipcart.css"
         />
+        <meta lang="fr" />
         <meta name="description" content="Le meilleur du savon bio fait main" />
         <meta
           name="og:descirption"
@@ -60,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Container>
-        <Component cart={cart} {...pageProps} />
+        <Component store={store} {...pageProps} />
         <script
           async
           src="https://cdn.snipcart.com/themes/v3.0.21/default/snipcart.js"
@@ -70,6 +60,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           data-api-key="ZGVlYjI4OGQtYzQxNC00NTI2LThlMmMtOTNlZmE4MmMxOTU3NjM3MzUyNDY0MzQ5MDg0OTg0"
           data-config-add-product-behavior="none"
           hidden
+          dangerouslySetInnerHTML={{ __html: "" }}
         ></div>
       </Container>
     </div>
