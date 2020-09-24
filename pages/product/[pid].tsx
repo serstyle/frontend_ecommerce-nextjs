@@ -42,11 +42,16 @@ export interface IProps {
 }
 
 export default function ProductById(props: IProps) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(true);
   };
+
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === "clickaway") {
@@ -67,7 +72,6 @@ export default function ProductById(props: IProps) {
       unsub1();
     };
   }, []);
-  const router = useRouter();
   const { product, resources, store } = props;
   return (
     <div>
